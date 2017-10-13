@@ -1,0 +1,25 @@
+<% content_for :title, 'Zdjęcia' %>
+<h1>Ogłoszenia</h1>
+<%= link_to "Dodaj zdjęcie", new_ad_path, class: 'btn btn-primary pull-right' %></tr>
+
+<table class="table">
+<thead>
+<tr>
+<th>Tytuł</th>
+<th>Opis</th>
+<th>Plik</th>
+<th colspan="2"></th>
+</tr>
+</thead>
+<tbody>
+<% @ads.each do |ad| %>
+<tr>
+<td><%= link_to ad.title, ad_path(ad) %></td>
+<td><%= ad.description %></td>
+<td><%= image_tag ad.image_url, height: 50 %></td>
+<td><%= link_to 'Edytuj', edit_ad_path(ad) %></td>
+<td><%= link_to 'Usuń', ad_path(ad), method: :delete, data: { confirm: 'Na pewno chcesz usunąć ogłoszenie?' }%></td>
+</tr>
+<% end %>
+</tbody>
+</table>

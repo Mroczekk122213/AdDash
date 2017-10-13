@@ -1,0 +1,11 @@
+<% content_for :title, @ad.title %>
+<h1>
+  <%= @ad.title %>
+</h1>
+<p>
+  <strong>Opis:</strong>
+  <%= @ad.description %>
+</p>
+<p>
+<%= image_tag @ad.image_url, height: 50 %>
+</p>
