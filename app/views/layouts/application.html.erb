@@ -6,6 +6,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1200px-Ruby_logo.svg.png" />
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
   </head>
 
   <body>
@@ -14,6 +17,7 @@
     <% flash.each do |message_type, message| %>
   <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
+
   <%= yield %>
   <%= render 'layouts/footer' %>
   </div>

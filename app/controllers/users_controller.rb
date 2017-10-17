@@ -4,14 +4,17 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(user_params)
-    if @user.save
-      flash[:success] = "Zostałeś zarejestrowany"
-      redirect_to root_path
-    else
-      flash[:danger] = 'Nie można utworzyć konta użytkownika.'
-      render :new
-    end
+    if !verify_recaptcha
+  flash.now[:danger] = 'Uzupełnij reCAPTCHA.'
+  render :new
+  elsif @user.save
+  flash[:success] = 'Zostałeś zarejestrowany.'
+  redirect_to root_path
+  else
+  flash.now[:danger] = 'Nie można utworzyć konta użytkownika.'
+  render :new
   end
+end
 private
 def user_params
   params.require(:user).permit(
