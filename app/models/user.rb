@@ -7,7 +7,13 @@ class User < ApplicationRecord
   validates :first_name, :last_name, presence: true,
             length: {minimum: 2, maximum: 50}
 has_secure_password
+has_many :ads
+
 def downcase_email
   email.downcase!
+end
+
+def full_name
+  "#{first_name} #{last_name}"
 end
 end

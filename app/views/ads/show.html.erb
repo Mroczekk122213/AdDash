@@ -9,3 +9,7 @@
 <p>
 <%= image_tag @ad.image_url, height: 50 %>
 </p>
+<p>
+  <strong>Dodane przez: </strong>
+  <%= "#{@ad.user.full_name}"%>
+<p>

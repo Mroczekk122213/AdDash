@@ -1,9 +1,11 @@
 class AdsController < ApplicationController
-before_action :set_ad, only: [:show, :edit, :update, :destroy]
+before_action :login_required, except: [:index, :show]
+before_action :set_ad, only: [:edit, :update, :destroy]
 def index
   @ads = Ad.all
 end
 def show
+  @ad = Ad.find(params[:id])
 end
 def new
 @ad = Ad.new
@@ -12,6 +14,7 @@ def edit
 end
 def create
 @ad = Ad.new(ad_params)
+@ad.user = current_user
 if @ad.save
   flash[:success] = "Zamieszczono ogłoszenie!"
   redirect_to @ad
@@ -40,7 +43,7 @@ else
 end
 end
 def set_ad
-  @ad = Ad.find(params[:id])
+  @ad = current_user.ads.find(params[:id])
 end
 private
 

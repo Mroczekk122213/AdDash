@@ -17,9 +17,15 @@
 <td><%= link_to ad.title, ad_path(ad) %></td>
 <td><%= ad.description %></td>
 <td><%= image_tag ad.image_url, height: 50 %></td>
+<% if ad.user == current_user %>
 <td><%= link_to 'Edytuj', edit_ad_path(ad) %></td>
 <td><%= link_to 'Usuń', ad_path(ad), method: :delete, data: { confirm: 'Na pewno chcesz usunąć ogłoszenie?' }%></td>
-</tr>
+<% else %>
+<td>
+<td>
 <% end %>
+<% end %>
+
+</tr>
 </tbody>
 </table>

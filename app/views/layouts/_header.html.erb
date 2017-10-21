@@ -16,8 +16,13 @@
 <li><%= link_to "O nas", about_path %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li><%= link_to "Logowanie", '#' %></li>
+<% if logged_in? %>
+<li><%= link_to "Moje konto", account_path %></li>
+<li><%= link_to "Wyloguj się", logout_path, method: :delete %></li>
+<% else %>
+<li><%= link_to "Logowanie", login_path %></li>
 <li><%= link_to "Rejestracja", signup_path %></li>
+<% end %>
 </ul>
 </div>
 </div>
