@@ -59,10 +59,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
   [:controller, :view, :request].each do |type|
-  config.include ::Rails::Controller::Testing::TestProcess, type: type
-  config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
-  config.include ::Rails::Controller::Testing::Integration, type: type
+    config.include ::Rails::Controller::Testing::TestProcess, type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration, type: type
   end
-  config.include FactoryGirl::Syntax::
-  config.include ControllerHelper, type: :controller
+    config.include ControllerHelper, type: :controller
 end
