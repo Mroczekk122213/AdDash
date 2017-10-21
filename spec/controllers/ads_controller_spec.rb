@@ -1,7 +1,4 @@
 require 'rails_helper'
-require 'capybara/rspec'
-require 'factory_girl_rails'
-require 'spec_helper'
 describe AdsController do
 let(:user) { create(:user) }
 let(:user_2) { create(:user) }
@@ -194,7 +191,7 @@ context 'logges as user not associated with ad' do
   it 'redirects to login page' do
   delete :destroy, params: { id: ad }
   expect(response).to_not be_success
-expect(response).to redirect_to(login_path)
+  expect(response).to redirect_to(login_path)
 end
 end
 end
