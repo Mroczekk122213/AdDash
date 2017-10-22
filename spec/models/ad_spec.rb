@@ -12,7 +12,7 @@ ad = build(:ad, description: '')
 expect(ad).to_not be_valid
 end
 it 'is invalid without user' do
-ad = build(:ad, user: nil)
-expect(ad).to_not be_valid
-end
+  ad = build(:ad, user: nil)
+  expect(ad).to_not be_valid
+ end
 end

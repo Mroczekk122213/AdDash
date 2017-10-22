@@ -8,6 +8,7 @@ class User < ApplicationRecord
             length: {minimum: 2, maximum: 50}
 has_secure_password
 has_many :ads
+has_many :ratings
 
 def downcase_email
   email.downcase!

@@ -6,6 +6,7 @@ def index
 end
 def show
   @ad = Ad.find(params[:id])
+  @rating = @ad.ratings.find_by(user: current_user)
 end
 def new
 @ad = Ad.new
@@ -44,6 +45,14 @@ end
 end
 def set_ad
   @ad = current_user.ads.find(params[:id])
+end
+def rate
+  ad = Ad.find(params[:id])
+  rating = ad.ratings.find_or_initialize_by(user: current_user)
+  rating.value = params[:value]
+  rating.save!
+  flash[:success] = 'Ocena została zapisana.'
+  redirect_to(:back)
 end
 private
 

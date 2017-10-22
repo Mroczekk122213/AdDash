@@ -1,0 +1,7 @@
+<%= button_to 'Podoba mi się', rate_ad_path(ad), params: { value: 1 } %>
+<%= button_to 'Nie podoba mi się', rate_ad_path(ad), params: { value: - 1} %>
+<% if rating %>
+<p>
+  Przyznałeś ocenę <%= rating.value %>
+</p>
+<% end %> 

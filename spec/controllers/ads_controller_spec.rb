@@ -1,4 +1,8 @@
 require 'rails_helper'
+require 'capybara/rspec'
+require 'factory_girl_rails'
+require 'spec_helper'
+require 'rails_helper'
 describe AdsController do
 let(:user) { create(:user) }
 let(:user_2) { create(:user) }
@@ -172,7 +176,7 @@ context 'logges as user not associated with ad' do
   it 'deletes ad' do
   expect {
   delete :destroy, params: { id: ad }
-  }.to change(Ad, :count).by(-1)
+}.to change(Ad, :count).by(-1)
   end
   it 'redirects to index page' do
   delete :destroy, params: { id: ad }
@@ -192,7 +196,7 @@ context 'logges as user not associated with ad' do
   delete :destroy, params: { id: ad }
   expect(response).to_not be_success
   expect(response).to redirect_to(login_path)
-end
-end
-end
+   end
+  end
+ end
 end
